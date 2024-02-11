@@ -1,5 +1,6 @@
 import { Component, effect, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { TitleComponent } from '@shared/components/title/title.component';
 
 type Grade = 'A' | 'B' | 'C';
 enum GradeEnum {
@@ -10,7 +11,7 @@ enum GradeEnum {
 
 @Component({
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ ReactiveFormsModule, TitleComponent ],
   templateUrl: './control-flow.component.html',
   styles: ``
 })
