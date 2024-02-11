@@ -1,4 +1,5 @@
 <section class="grid grid-cols-1 md:grid-cols-2 gap-3">
+  <!-- @if -->
   <div class="bg-white rounded shadow-md p-10">
     <h2 class="text-2xl font-semibold mb-5">if: {{ showContent() }}</h2>
     <button
@@ -6,9 +7,88 @@
       (click)="toggleContent()">Click me</button>
 
     @if( showContent() ){
-      <h1 class="mt-4 text-2xl text-cyan-600 font-light">Signal value: {{ showContent() }} </h1>
+    <h1 class="mt-4 text-2xl text-cyan-600 font-light">Signal value: {{ showContent() }} </h1>
     }@else {
-      <h1 class="mt-4 text-2xl text-red-600 font-light">*************</h1>
+    <h1 class="mt-4 text-2xl text-red-600 font-light">*************</h1>
     }
+  </div>
+
+  <!-- @Switch -->
+  <div class="bg-white rounded shadow-md p-10">
+    <h2 class="text-2xl font-semibold mb-5">switc (A, B, C)</h2>
+    <input type="text" class="border border-cyan-700 w-1/2 rounded px-2 py-1 " placeholder="Qualification"
+      [formControl]="gradeChoose" [value]="grade()" #inputGrade (keyup.enter)="selectChoise( inputGrade.value )">
+    @switch ( grade() ) {
+    @case ('A'){
+    <p>Mayo a 90</p>
+    }
+    @case ('B') {
+    <p>Mayo a 80 </p>
+    }
+    @case('C'){
+    <p>Reprobate ❌</p>
+    }
+    @default {
+    <p>Qualification not valid</p>
+    }
+    }
+
+    <h3 class="my-4 text-2xl font-bold text-cyan-600">With Signal Select</h3>
+    <select (change)="signalStateGrade.set( stateGrade.value ?? 'A')" name="" [formControl]="stateGrade">
+      <option selected disabled class="text-cyan-600">Grade **</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+    </select>
+
+    @switch ( signalStateGrade() ) {
+    @case ('A'){
+    <p>Mayo a 90</p>
+    }
+    @case ('B') {
+    <p>Mayo a 80 </p>
+    }
+    @case('C'){
+    <p>Reprobate ❌</p>
+    }
+    @default {
+    <p>Qualification not valid</p>
+    }
+    }
+  </div>
+
+
+
+  <!-- @For -->
+  <div class="bg-white rounded shadow-md p-10">
+    <h2 class="text-2xl text-cyan-600 font-bold">FOR</h2>
+    <ul class="flex flex-col gap-1">
+      @for (framework of frameworks();
+      track frameworks; let i = $index, first = $first, last = $last, even = $even,
+      odd = $odd, count = $count
+      ) {
+      <li
+        [class]="{
+            'bg-blue-400' : even && !first && !last,
+            'bg-pink-300' : odd && !first && !last,
+            'bg-green-400' : first || last,
+          }"
+        class=" rounded-sm text-gray-800 p-1"
+      >
+        {{ i + 1 }}/{{ count }} - {{ framework }}
+      </li>
+      }
+    </ul>
+  </div>
+
+  <div class="bg-white rounded shadow-md p-10">
+    <h2 class="text-2xl text-cyan-600 font-bold mb-3">FOR | EMPTY</h2>
+    <ul>
+      @for (framework of frameworks2(); track $index) {
+      <li>{{ framework }}</li>
+      }@empty {
+      <li class="text-red-500">Empty Framewors array [ ]</li>
+      }
+    </ul>
   </div>
 </section>
