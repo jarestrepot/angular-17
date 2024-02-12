@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeferViewsComponent } from './defer-views.component';
+import  DeferViewsComponent from './defer-views.component';
 
 describe('DeferViewsComponent', () => {
   let component: DeferViewsComponent;
@@ -11,7 +11,7 @@ describe('DeferViewsComponent', () => {
       imports: [DeferViewsComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(DeferViewsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

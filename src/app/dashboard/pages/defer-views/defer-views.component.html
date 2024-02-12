@@ -1,1 +1,32 @@
-<p>defer-views works!</p>
+<app-title title="Defer View" />
+
+<section class="grdi grid-cols-1">
+  @defer () {
+    <shared-heavy-loader-slow cssClass="bg-blue-400 text-white grid place-items-center text-2xl" />
+  }@placeholder {
+
+    <div class="w-full h-screen font-semibold bg-slate-200 grid grid-cols-1 place-items-center gap-0 animate-pulse">
+      <p class="text-3xl text-black ">Loading...</p>
+    </div>
+  }
+
+  @defer (on idle) {
+    <shared-heavy-loader-slow cssClass="bg-green-400 text-white grid place-items-center text-2xl" />
+  }@placeholder {
+
+    <div class="w-full h-screen font-semibold bg-slate-200 grid grid-cols-1 place-items-center gap-0 animate-pulse">
+      <p class="text-3xl text-black ">Loading...</p>
+    </div>
+  }
+
+
+  @defer (on viewport) {
+    <shared-heavy-loader-slow cssClass="bg-red-400 text-white grid place-items-center text-2xl" />
+  }@placeholder {
+
+    <div class="w-full h-screen font-semibold bg-slate-200 grid grid-cols-1 place-items-center gap-0 animate-pulse">
+      <p class="text-3xl text-black ">Loading...</p>
+    </div>
+  }
+
+</section>

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
+import { TitleComponent } from '@shared/components/title/title.component';
 
 @Component({
   standalone: true,
-  imports: [],
+  imports: [ TitleComponent ],
   templateUrl: './defet-options.component.html',
-  styles: ``
 })
 export default class DefetOptionsComponent {
 
