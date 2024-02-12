@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewTransitionComponent } from './view-transition.component';
+import { ViewTransitionComponent } from './view-transition1.component';
 
 describe('ViewTransitionComponent', () => {
   let component: ViewTransitionComponent;
@@ -10,8 +10,8 @@ describe('ViewTransitionComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ViewTransitionComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(ViewTransitionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

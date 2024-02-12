@@ -1,1 +1,113 @@
-<app-title title="Defer Options"/>
+<app-title title="Defer Triggers" />
+
+<section class="grid">
+  <h2 class="text-xl text-cyan-700 font-semibold">Interactions</h2>
+  <hr class="my-2">
+  <!-- Solo carga la parte del @defer si hay interaccción con los elementos del @placeholder -->
+  @defer ( on interaction ) {
+  <shared-heavy-loader-fast cssClass="bg-blue-500 text-xl grid h-20 text-white place-items-center">
+    <span>On interaction</span>
+  </shared-heavy-loader-fast>
+  }@placeholder {
+  <div class="w-full h-20 bg-purple-100 cursor-pointer text-center">
+    Click div <span class="text-xl text-green-600 font-bold underline ">( on interaction ) defer</span>
+  </div>
+  }
+
+</section>
+
+<section class="grid grid-cols-1 place-items-center">
+  <hr class="my-2">
+  <button
+    type="button"
+    #btnInteraction
+    class="text-white w-full sm:w-1/2 lg:w-1/6 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+    Click me!
+  </button>
+  <!-- Solo carga la parte del @defer si hay interaccción con el elemento que le indiquemos. EN este caso realizamos o delegamos la interacción al boton. -->
+  @defer ( on interaction( btnInteraction ) ) {
+  <shared-heavy-loader-fast class="w-full" cssClass="bg-green-500 text-xl grid h-20  text-white place-items-center">
+    <span>On interaction</span>
+  </shared-heavy-loader-fast>
+  }@placeholder {
+  <div class="w-full h-20 bg-purple-100 cursor-pointer text-center">
+    Placeholder div <span class="text-xl text-green-600 font-bold underline ">on interaction( #RefInteraction )</span>
+  </div>
+  }
+
+</section>
+
+<section class="grid grid-cols-1 place-items-center">
+  <hr class="my-2">
+
+  <!-- Está amarrado a una reeferenia -->
+  @defer ( on hover( btnInteraction ) ) {
+  <shared-heavy-loader-fast class="w-full" cssClass="bg-cyan-500 text-xl grid h-20  text-white place-items-center">
+    <span>On hover( #ref )</span>
+  </shared-heavy-loader-fast>
+  }@placeholder {
+  <div class="w-full h-20 bg-purple-100 cursor-pointer text-center">
+    Placeholder div <span class="text-xl text-green-600 font-bold underline ">on hover( #RefInteraction )</span>
+  </div>
+  }
+
+</section>
+
+<section class="grid grid-cols-1 place-items-center">
+  <hr class="my-2">
+  <!-- Esta ammarado al hover del placeholder -->
+  @defer ( on hover( ) ) {
+  <shared-heavy-loader-fast class="w-full" cssClass="bg-red-500 text-xl grid h-20  text-white place-items-center">
+    <span>on hover</span>
+  </shared-heavy-loader-fast>
+  }@placeholder {
+  <div class="w-full h-20 bg-purple-100 cursor-pointer text-center">
+    Placeholder div <span class="text-xl text-green-600 font-bold underline ">on hover( ) -> placeholder</span>
+  </div>
+  }
+
+</section>
+
+
+<section class="grid grid-cols-1 place-items-center">
+  <hr class="my-2">
+  @defer ( on immediate )  {
+  <shared-heavy-loader-fast class="w-full" cssClass="bg-gray-500 text-xl grid h-20  text-white place-items-center">
+    <span>On immediate</span>
+  </shared-heavy-loader-fast>
+  }@placeholder {
+  <div class="w-full h-20 bg-purple-100 cursor-pointer text-center">
+    immediate div <span class="text-xl text-green-600 font-bold underline ">on immediate when you load the app</span>
+  </div>
+  }
+
+</section>
+
+<section class="grid grid-cols-1 place-items-center">
+  <hr class="my-2">
+  @defer ( on timer( 2000 ) ) {
+  <shared-heavy-loader-fast class="w-full" cssClass="bg-purple-500 text-xl grid h-20  text-white place-items-center">
+    <span>On timer</span>
+  </shared-heavy-loader-fast>
+  }@placeholder {
+  <div class="w-full h-20 bg-purple-100 cursor-pointer text-center">
+    timer div <span class="text-xl text-green-600 font-bold underline ">2 seconds...</span>
+  </div>
+  }
+
+</section>
+
+
+<section class="grid grid-cols-1 place-items-center">
+  <hr class="my-2">
+  @defer ( on hover; prefetch on idle ) {
+  <shared-heavy-loader-fast class="w-full" cssClass="bg-amber-600 text-xl grid h-20  text-white place-items-center">
+    <span>on hover; prefetch on idle</span>
+  </shared-heavy-loader-fast>
+  }@placeholder {
+  <div class="w-full h-20 bg-purple-100 cursor-pointer text-center">
+    hover || prefetch trigger div <span class="text-xl text-green-600 font-bold underline ">😵‍💫</span>
+  </div>
+  }
+
+</section>

@@ -1,8 +1,23 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withViewTransitions } from '@angular/router';
 
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes)]
+  providers: [
+    provideRouter(
+      routes,
+      // View transitions ✅
+      withViewTransitions(
+        {
+          skipInitialTransition: true,
+          
+          // onViewTransitionCreated(transitionInfo) {
+          //   console.log({ transitionInfo }) // Valores de la ruta
+          // }
+        }
+      )//✅✅✅
+    ),
+
+  ]
 };
