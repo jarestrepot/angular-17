@@ -1,1 +1,19 @@
-<p>users works!</p>
+<section class="w-full p-2">
+  <app-title title="User List" />
+  <ul class="grid grid-cols-1 md:grid_cols-3 lg:grid-cols-4 gap-5">
+    @for (user of userService.users(); track user.id) {
+      <li class="flex flex-col justify-center items-center">
+        <img class="rounded w-1/2 h-auto object-cover shadow-md" [srcset]="user.avatar" [alt]="user.first_name" />
+        <a class="text-center text-xl text-wrap font-thin text-cyan-500 hover:text-cyan-900  hover:underline transition-all duration-200  hover:underline-offset-4 mt-4"
+          [routerLink]="['/dashboard/user', user.id ]">
+          {{ user.first_name }} {{ user.last_name }}
+        </a>
+      </li>
+    }@empty {
+
+      <div class="col-span-full h-screen font-semibold bg-slate-200 grid grid-cols-1 place-items-center gap-0 animate-pulse">
+        <p class="text-3xl text-black ">Loading...</p>
+      </div>
+    }
+  </ul>
+</section>
